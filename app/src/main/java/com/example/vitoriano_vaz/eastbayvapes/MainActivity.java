@@ -1,9 +1,12 @@
 package com.example.vitoriano_vaz.eastbayvapes;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 /*
 This app is for a local Vape Shop
@@ -11,61 +14,105 @@ This app is for a local Vape Shop
 
  the array is going to be called = da_menu
  */
-
 public class MainActivity extends AppCompatActivity {
+    private static Intent java;
+
+    //used this to get rid of red line under intent on line 38 if it causes more problems remove and resolve issue
+    private Intent intent;
+
+    /*
+    called when the user clicks the send Button
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        populateListView();
+        Button menubutton = (Button) findViewById(R.id.menubutton);
+        menubutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        /*
+        sends user to about us xml via AboutActivity.class
+         */
+        Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        /*
+        attempting to send user to each individual app with the URI Intent method
+
+        PackageManager packageManager = getPackageManager();
+        List activities = packageManager.queryIntentActivities(intent,
+                PackageManager.MATCH_DEFAULT_ONLY);
+        boolean isIntentSafe = activities.size() > 0;
+        */
+
+
+        Uri number = Uri.parse("tel:9259619029");
+        Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
+
+        Uri webpage = Uri.parse("http://www.facebook.com/eastbayvapes");
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+
+        /*this is to send the user to facebook application
+
+        try {
+
+            context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
+            return new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/eastbay"));
+
+        } catch (Exception e) {
+
+            return new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/eastbay"));
+
+        }
+        */
+
+
+        // intent to send user to instagram
+
+        Uri uri = Uri.parse("http://instagram.com/_u/eastbayvapes");
+        Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
+
+        likeIng.setPackage("com.instagram.android");
+
+        try {
+            startActivity(likeIng);
+        } catch (ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://instagram.com/eastbayvapes")));
+        }
+
+        //Intent to send user to email app
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("plain/text");
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"eastbayvapes@gmail.com"});
+        intent.putExtra(Intent.EXTRA_SUBJECT, "subject");
+        intent.putExtra(Intent.EXTRA_TEXT, "");
+        startActivity(Intent.createChooser(intent, ""));
+
+        /*Intent to send user to google maps
+
+        String uri = "https://maps.google.co.in/maps?q=" + 1549 N Vasco Rd, Livermore, Ca 94551;
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+        context.startActivity(intent);
+        */
+
     }
 
-    private void populateListView() {
-        // Create the list of items
 
-        String[] juiceMenu= {
-                "#1 BlueBerry Bombshell",
-                "#2 Richie Rich",
-                "#3 Chiquita",
-                "#4 Afternoon Delight",
-                "#5 Poppin Otters",
-                "#6 Viva La Sangria",
-                "#7 Okole Maluna",
-                "#8 Carmen Miranda",
-                "#9 Pomalade",
-                "#10 Izual",
-                "#11 Butter Stotch",
-                "#12 Blue Bulls",
-                "#13 Grape Ape",
-                "#14 Bruce Juice",
-                "#15 Doc Holiday",
-                "#16 Peachy Keen",
-                "#17 Hula",
-                "#18 New York",
-                "#19 Al Gore",
-                "#20 Lux Charms",
-                "#21 Sailor Jack",
-                "#22 Get Him to the Greek",
-                "#23 Key We Lie Chi",
-                "#24 Spring Fling",
-                "#25 Gumby",
-                "#26 Chai-Milk",
-                "#27 Mr. Bean",
-                "#28 50 Shades of Orange",
-                "#29 Blue Waffles",
-                "#30 Enigma",
-                "#31 Mr. Freeze",
-                "#32 Cup of Joe"};
-        // Build adapter
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this,               // context for the activity
-                R.layout.da_menu,   // Layout to create
-                juiceMenu);         // Items to be displayed
-
-        //configure list view
-        ListView list = (ListView) findViewById(R.id.listViewMain);
-        list.setAdapter(adapter);
-    }
 }
