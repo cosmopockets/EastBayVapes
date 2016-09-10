@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/myRelativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:inAnimation="@android:anim/slide_in_left"
+    android:padding="2dp">
+
+    <TextView
+        android:id="@+id/AboutUs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="About Us"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="normal|bold"
+        android:textColor="#fcfbfb"
+        android:layout_margin="2dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="www.eastbayvapes.com"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:id="@+id/textView3"
+        android:textSize="24dp"
+        android:autoLink="web"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_below="@+id/AboutUs"
+        android:layout_alignParentStart="true"
+        android:padding="2dp"
+        android:layout_margin="2dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="eastbayvapes@gmail.com"
+        android:id="@+id/textView4"
+        android:autoLink="email"
+        android:clickable="false"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:padding="2dp"
+        android:layout_margin="2dp"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1549 N Vasco Rd Livermore, Ca 94551"
+        android:id="@+id/textView5"
+        android:textStyle="bold"
+        android:textSize="24dp"
+        android:textColor="#fcfbfb"
+        android:autoLink="map"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentStart="true"
+        android:padding="2dp"
+        android:layout_margin="2dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Facebook.com/eastbayvapes"
+        android:id="@+id/textView6"
+        android:autoLink="web"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="24dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentStart="true"
+        android:padding="2dp"
+        android:layout_margin="2dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="(925)961-9029"
+        android:id="@+id/textView7"
+        android:padding="2dp"
+        android:phoneNumber="true"
+        android:textStyle="bold"
+        android:textSize="24dp"
+        android:layout_below="@+id/textView8"
+        android:layout_alignStart="@+id/textView8"
+        android:autoLink="phone"
+        android:layout_margin="2dp"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Instagram:@eastbayvapes"
+        android:id="@+id/textView8"
+        android:layout_below="@+id/textView6"
+        android:layout_alignStart="@+id/textView6"
+        android:padding="2dp"
+        android:textColor="#fefcfc"
+        android:textStyle="bold"
+        android:textSize="24dp"
+        android:layout_margin="2dp"
+        android:clickable="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Monday - Saturday 10:00 - 8:00 Sunday 10:00 - 6:00"
+        android:id="@+id/textView9"
+        android:layout_below="@+id/textView7"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="24dp"
+        android:textColor="#ffffff" />
+
+
+</RelativeLayout>
